@@ -178,3 +178,13 @@ async def update_expense(expense_id: str, updated_data: Expense):
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"An error occurred: {e}")
+
+
+# pipeline = [
+#     {"$group": {"_id": {"month": "$month", "year": "$year"}}},
+#     {"$project": {"month": "$_id.month", "year": "$_id.year", "_id": 0}},
+#     {"$sort": {"year": 1, "month": 1}}  # Optional: Sort by year and month
+# ]
+#
+# # Execute the aggregation pipeline
+# result = list(collection.aggregate(pipeline))
