@@ -9,3 +9,9 @@ Start back-end
 Start front-end
 
     streamlit run app.py
+
+For docker
+        
+    cd expense
+    docker compose build
+    docker compose up

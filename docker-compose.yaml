@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGO_URI=mongodb://mongodb_app:27017
+    depends_on:
+      - mongodb_app
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "8501:8501"
+    environment:
+      - API_URL=http://backend:8000
+
+  mongodb_app:
+      image: mongodb/mongodb-community-server
+      volumes:
+        - type: bind
+          source: ./data
+          target: /data/db
+      ports:
+        - "27017:27017"
+
+volumes:
+  mongo-data:
